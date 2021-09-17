@@ -1,10 +1,10 @@
 import './style-sheets/CreateBlog.css'
 import { useState, useRef } from 'react';
-import useFetch from './useFetch';
+import useFirebase from './useFirebase';
 import { useHistory } from 'react-router-dom';
 
 const CreateBlog = () => {
-    const {createData} = useFetch('http://localhost:8000/blogs/')
+    const {createData} = useFirebase();
     const history = useHistory();
     const blogDetailsELement = useRef(null);
     const [title, setTitle] = useState('');
@@ -13,8 +13,8 @@ const CreateBlog = () => {
     const handleSubmit = e => {
         e.preventDefault();
         const blog = {title, content, author};
-        createData(blog).then(data => {
-            history.push(`/blogs/${data.id}`)
+        createData(blog).then(docRef => {
+            history.push(`/blogs/${docRef.id}`)
         }).catch(error => {
             console.log(error.statusText);
         });

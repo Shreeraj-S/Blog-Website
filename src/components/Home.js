@@ -1,9 +1,9 @@
 import './style-sheets/Home.css';
 import Blogs from './Blogs';
-import useFetch from './useFetch';
+import useFirebase from './useFirebase';
 
 const Home = () => {
-    const {isPending, error, data: blogs} = useFetch('http://localhost:8000/blogs/');
+    const {isPending, error, data: blogs} = useFirebase();
     return(
         <div className="home">
             <h2>Blogs</h2>

@@ -1,14 +1,14 @@
 import { useParams, useHistory } from "react-router-dom";
-import useFetch from "./useFetch";
+import useFirebase from "./useFirebase";
 import './style-sheets/BlogDetails.css'
 
 const BlogDetails = () => {
     const {id} = useParams();
     const history = useHistory();
-    const {data: blog, deleteData} = useFetch('http://localhost:8000/blogs/' + id);
+    const {data: blog, isPending, deleteData} = useFirebase(id);
     const handleClick = () => {
-        deleteData()
-            .then(data => {
+        deleteData(id)
+            .then(() => {
                 history.push('/');
             })
             .catch(error => {
@@ -16,12 +16,12 @@ const BlogDetails = () => {
             });
     };
     return(
-        blog && (
-            <div className="blog-details">
-                <h2 className="blog-title">{blog.title}</h2>
-                <p className="blog-content">{blog.content}</p>
+        blog && !isPending &&(
+            <div className="blog-details" key = {blog.id}>
+                <h2 className="blog-title">{blog.data().title}</h2>
+                <p className="blog-content">{blog.data().content}</p>
                 <button className="blog-delete" onClick={handleClick}>Delete Blog</button>
-                <p className="blog-author">Written by {blog.author}</p>
+                <p className="blog-author">Written by {blog.data().author}</p>
             </div>
         )
     );
