@@ -1,0 +1,38 @@
+.blog-details{
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: #f7f7f7;
+    padding: 20px;
+}
+.blog-details .blog-title{
+    text-align: center;
+    padding: 10px;
+    font-size: 35px;
+    color: #5a08f1ef;
+    padding-top: 0px;
+}
+.blog-details .blog-content{
+    font-size: 20px;
+    line-height: 25px;
+    text-align: justify;
+}
+.blog-details .blog-author{
+    padding: 15px;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000cc;
+}
+.blog-details .blog-delete{
+    margin: 8px;
+    padding: 10px 15px;
+    background-color: #fd3636;
+    border: 2px solid #f7f7f7;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    float: right;
+    color: white;
+}
+.blog-details .blog-delete:hover{
+    border: 2px solid #494949;
+}

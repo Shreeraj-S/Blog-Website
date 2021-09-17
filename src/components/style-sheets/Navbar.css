@@ -1,0 +1,32 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+}
+.navbar header{
+    flex-grow: 1;
+}
+.navbar .links{
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.navbar a{
+    text-decoration: none;
+    background-color: #5a08f1;
+    color: white;
+    font-size: 20px;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+.navbar li{
+    line-height: 400%;
+    margin: 0 20px;
+}
+.navbar h1{
+    padding: 10px;
+    text-align: center;
+    color: #5a08f1;
+    font-size: 35px;
+}

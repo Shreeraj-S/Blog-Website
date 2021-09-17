@@ -1,0 +1,35 @@
+.home{
+    max-width: 700px;
+    margin: 30px auto;
+}
+.home > h2{
+    padding: 10px;
+    text-align: center;
+    color: #476101ef;
+    font-size: 30px;
+    text-decoration: underline;
+}
+.home .blog{
+    margin: 10px;
+    padding: 15px;
+    background-color: #f0eef53b;
+    box-shadow: 4px 4px rgb(216, 216, 216);
+}
+.home .blog:hover{
+    background-color: #f0eef5;   
+}
+.home .loding{
+    color: #0dca0d;
+    font-size: 19px;
+    padding: 10px;
+    padding-left: 20px;
+}
+.home .error{
+    color: #ca1a0d;
+    font-size: 19px;
+    padding: 10px;
+    padding-left: 20px;
+}
+.home a{
+    text-decoration: none;
+}

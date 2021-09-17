@@ -1,0 +1,15 @@
+.blog h2{
+    padding: 6px;
+    color: #5a08f1d8;
+    font-size: 23px;
+    text-align: start;
+}
+.blog p{
+    margin: 5px 0px;
+    padding: 5px;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.6);
+    font-style: italic;
+    font-weight: bold;
+    text-align: start;
+}
