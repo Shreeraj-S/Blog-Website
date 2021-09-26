@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy} from "firebase/firestore";
+import { getFirestore, collection, addDoc, deleteDoc, doc, getDoc, getDocs, query, orderBy} from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBJrA-sWmMREkzu8X_4gU82xZTEk_kF4wo",
@@ -16,22 +16,27 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const blogCollection = collection(db, "blogs");
 
-const useFirebase = (DocId = "") => {
-    const blogQuery = DocId ? doc(blogCollection, DocId): query(blogCollection, orderBy("timestamp", "desc"));
+const useFirebase = (DocId = '') => {
     const [data, setData] = useState(null);
     const [isPending, setisPending] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const unsuscribe = onSnapshot(blogQuery, blogs => {
-            if(blogs.empty){
-                setError('Sorry we are unable to get data at the moment please try again later 😓')
-            }else{
-                setData(blogs);
-            }
-            setisPending(false);
-        });
-    }, [])
+        const getBlogs = async () => {
+            const blogs = DocId ? 
+                await getDoc(doc(blogCollection, DocId)) :
+                await getDocs(query(blogCollection, orderBy("timestamp", "desc")));
+            return blogs;
+        };
+        getBlogs().then(blogs => {
+                setData(blogs); 
+                setisPending(false)
+            }).catch(error => {
+                setError('Sorry we are unable to get data at the moment please try again later 😓 ' + error);
+                setisPending(false)
+            })
+
+    }, [DocId])
     
     const createData = async data => {
         const dataDoc = {title: data.title, content: data.content, author: data.author, timestamp: new Date().getTime()};
@@ -40,7 +45,7 @@ const useFirebase = (DocId = "") => {
     };
 
     const deleteData = async id => {
-        const docRef = deleteDoc(doc(blogCollection, id));
+        deleteDoc(doc(blogCollection, id));
     };
 
     return {data, isPending, error, createData, deleteData };

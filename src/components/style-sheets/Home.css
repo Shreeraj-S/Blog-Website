@@ -1,5 +1,5 @@
 .home{
-    max-width: 700px;
+    max-width: 750px;
     margin: 30px auto;
 }
 .home > h2{
@@ -32,4 +32,14 @@
 }
 .home a{
     text-decoration: none;
+}
+@media screen and (max-width: 768px){
+    .home{
+        max-width: 600px;
+    }
+}
+@media screen and (max-width: 480px){
+    .home{
+        max-width: 420px;
+    }
 }

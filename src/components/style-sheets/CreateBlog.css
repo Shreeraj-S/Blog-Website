@@ -1,6 +1,8 @@
-.createBlogForm{
+.createBlog{
     max-width: 750px;
     margin: 50px auto;
+}
+.createBlogForm{
     display: flex;
     flex-direction: column;
 }
@@ -44,15 +46,52 @@
 .createBlogForm .blog-create:hover{
     border: 2px solid #494949;
 }
-.createBlog .head{
-    max-width: 800px;
-    margin: 5px auto;
-    border-bottom: 2px solid #252525;
+.createBlog .preview_header{
+    border-bottom: 1px solid #757575;
     color: #313131;
-    display: flex;
-    justify-content: space-between;
     cursor: pointer;
+    font-weight: normal;
+    position: relative;
+}
+.createBlog .preview_header::after{
+    content: '>';
+    display: inline-block;
+    position: absolute;
+    right: 1%;
+    color: #525252;
+    line-height: 35px;
+    transform: rotate(90deg) scale(0.7, 1);
+    transition: 0.3s;
+}
+.createBlog .preview_header.triggered::after{
+    transform: rotate(-90deg) scale(0.7, 1);
+    transition: 0.3s;
 }
 .inactive{
     display: none;
+}
+
+@media screen and (max-width: 768px){
+    .createBlog{
+        max-width: 500px;
+    }
+    .createBlogForm textarea{
+        height: 200px;
+        width: 480px;
+    }
+    .createBlog .head{
+        max-width: 500px;
+    }
+}
+@media screen and (max-width: 480px){
+    .createBlog{
+        max-width: 380px;
+    }
+    .createBlogForm textarea{
+        height: 200px;
+        width: 360px;
+    }
+    .createBlog .head{
+        max-width: 380px;
+    }
 }

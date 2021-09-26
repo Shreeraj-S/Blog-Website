@@ -7,6 +7,7 @@ const CreateBlog = () => {
     const {createData} = useFirebase();
     const history = useHistory();
     const blogDetailsELement = useRef(null);
+    const previewHeader = useRef(null);
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [author, setAuthor] = useState('');
@@ -20,7 +21,8 @@ const CreateBlog = () => {
         });
     };
     const handleClick = () => {
-        blogDetailsELement.current.classList.toggle('inactive')
+        blogDetailsELement.current.classList.toggle('inactive');
+        previewHeader.current.classList.toggle('triggered');
     };
 
     return(
@@ -34,7 +36,7 @@ const CreateBlog = () => {
                 <input type="text" value={author} onChange={e => setAuthor(e.target.value)}/>
                 <button className="blog-create">Create Blog</button>
             </form>
-            <h2 className="head" onClick={handleClick}>Preview <span> {'>'} </span></h2>
+            <h2 className="preview_header" ref={previewHeader} onClick={handleClick}>Preview</h2>
             <div className="blog-details inactive" ref={blogDetailsELement}>
                 <h2 className="blog-title">{title}</h2>
                 <p className="blog-content">{content}</p>

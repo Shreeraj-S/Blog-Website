@@ -36,3 +36,13 @@
 .blog-details .blog-delete:hover{
     border: 2px solid #494949;
 }
+@media screen and (max-width: 768px){
+    .blog-details {
+        max-width: 575px;
+    }
+}
+@media screen and (max-width: 480px){
+    .blog-details {
+        max-width: 360px;
+    }
+}
